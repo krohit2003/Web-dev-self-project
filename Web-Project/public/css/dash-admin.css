@@ -1,0 +1,58 @@
+body{
+    background-color: lightgrey;
+}
+
+#card_s{
+    margin-top: 50px;
+    /* background-color: rgb(200, 150, 84); */
+    width:100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.card{
+
+    width: 18rem;
+    /* background-color: aquamarine; */
+    border: 1px blue solid;
+    float: left;
+    display: flex;
+    align-items: center;
+    /* align-content:space-around; */
+}
+.logo{
+    border: 1px solid rgb(67, 88, 193);
+    margin-top: 20px; 
+    height:100px;
+    width:100px;
+    /* background-color: blanchedalmond; */
+    border-radius: 50%;
+}
+
+#use{
+    background-image: url(../Uploads/user-manager.jpg);
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#cli{
+    background-image: url(../Uploads/client-icon.jpg);
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#car{
+    background-image: url(../Uploads/caretaker-icon.jpg);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.class-body{
+    margin-top: 30px; 
+    height:200px;
+    width:200px;
+    /* background-color: rgb(54, 67, 63); */
+} 
+#btns{
+   margin: auto;
+}

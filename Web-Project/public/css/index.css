@@ -1,0 +1,317 @@
+body{
+    /* background-color:blanchedalmond; */
+}
+#navi{
+     /* background-color: aqua;   */
+    height:120px;
+    /* color: white; */
+}
+#na{
+    background-color: white; 
+    height:120px;
+    color: white;
+    cursor:pointer;
+}
+#left{
+        /* background-color: brown;    */
+     /* background-image: url(../Uploads/Start-Dog-Walking-Business-Image-pet-care-contract.png); */
+     width: ;
+     display: flex;
+     justify-content:space-evenly;
+     align-items:center;
+}
+
+#sitename{
+    width:;
+    height: ;
+    color: orange;
+    font-size: 50px;
+    font-family: didot,serif;
+    /* background-color: blueviolet;  */
+}
+
+
+.container-fluid{
+        /* background-color: aquamarine; */
+        height:40px;
+}
+.collapse.navbar-collapse{
+     /* background-color: blueviolet;   */
+    display: flex;
+    justify-content:  flex-end ;
+}
+
+
+#butn{
+    background-color: orange;
+    border-radius: 100px;
+     border: 1px; 
+     width: 130px;
+     height:40px;
+     margin-left: 20px;
+}
+
+
+
+#userType{
+    height:40px;
+}
+.inputbox{
+    border: 1px solid black ;
+    outline: 1px;
+}
+
+
+#signup-logo{
+     background-color: cornflowerblue; 
+
+    height:100px;
+    width:100px;
+    margin:auto;
+    border-radius: 50%;
+    background-image: url(../Uploads/signup-logo.png);
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: contain;
+    
+}
+#login-logo{
+    background-color: cornflowerblue;
+    height:100px;
+    width:100px;
+    margin:auto;
+    border-radius: 50%;
+    background-image: url(../Uploads/login-logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+    /* background-size: 100%; */
+    
+}
+
+
+
+#signupbox{
+    background-color: bisque; 
+    width:400px;
+    height: 430px;
+    margin: auto;
+    margin-top: 10%;
+    box-shadow: 0px 0px 15px 5px gray; border-radius: 5px;
+    display: none;
+}
+#loginbox{
+    background-color: bisque; 
+    width:400px;
+    height: 430px;
+    margin: auto;
+    margin-top: 10%;
+    box-shadow: 0px 0px 15px 5px gray; border-radius: 5px;
+    display: none;
+}
+/*  */
+
+
+
+
+
+#coro{
+    background-color: aqua;
+    height: 500px; 
+    width: auto;
+    display: flex;
+    align-items:center;
+}
+#haha{
+    background-color: blanchedalmond;
+    height: 460px; 
+    width: 95%;
+    margin: auto;
+    
+}
+
+
+#head{
+    margin-top: 50px;
+    background-color:black;
+    height: 50px; 
+    width: 98%;
+    display: flex;
+    align-items:center;
+}
+
+#for_text{
+    /* background-color: blanchedalmond; */
+    height: ; 
+    width: ;
+    margin: auto;
+    font-size: 30px;
+    color: rgb(255, 166, 0);
+    font-family: didot,serif;
+}
+
+
+
+
+#card_s{
+    /* margin-top: 50px; */
+     background-color: rgb(230, 178, 110);  
+    width:98%;
+    height: 500px;
+    display: flex;
+     justify-content: space-evenly; 
+    align-items:center;
+}
+.card{
+    /* margin-top: 50px; */
+    width: 300px;
+    height:400px;
+    /* background-color: aquamarine; */
+    border: 2px orange solid;
+    /* float: left; */
+    display: flex;
+    align-items: center;
+     /* align-content:space-around;  */
+}
+#botton{
+    margin-top: 20px;
+    background-color: orange;
+    border-radius: 100px;
+    border: 1px; 
+    width: ;
+    height:;
+     margin-left: 20px;
+}
+.logo{
+    border: 2px solid orange;
+    margin-top: 20px; 
+    height:100px;
+    width:100px;
+    /* background-color: blanchedalmond; */
+    border-radius: 50%;
+}
+
+#c-taker{
+    background-image: url(../Uploads/care-taker.jpg);
+    background-size:150%;
+    background-position: center;
+    background-repeat: no-repeat;
+} 
+#find-c-taker{
+    background-image: url(../Uploads/care-taker_2.jpg);
+    background-size:130%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#support_icon{
+    /* background-color:aquamarine ; */
+    background-image: url(../Uploads/support_2.jpg);
+    background-size:contain;
+
+     background-position: center;
+    background-repeat: no-repeat; 
+} 
+#support_1{
+    background-image: url(../Uploads/support_1.png);
+    background-size:130%;
+    background-position: center;
+    background-repeat: no-repeat;
+} 
+
+.card-body{
+    margin-top: 00px; 
+    height:;
+    width:80%;
+    /* background-color: rgb(54, 67, 63); */
+} 
+
+
+
+
+#card_s2{
+    /* margin-top: 50px; */
+     /* background-color: rgb(241, 224, 201);   */
+    width:98%;
+    height: 500px;
+    display: flex;
+    justify-content: space-evenly; 
+    align-items:center;
+}
+#inn{
+    width:98%;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content:space-evenly; 
+    align-items:center;
+}
+#sir{
+     /* margin-right: -250px;  */
+     border: 2px solid orange;
+}
+#me{
+    border: 2px solid orange;
+}
+#name{
+    /* color: orange; */
+}
+#map{
+    width:350px;
+    height:350px;
+}
+
+#end{
+    margin-top: 50px;
+    background-color:orange;
+    height: 150px; 
+    /* width: 98%; */
+     display: flex; 
+    flex-wrap: wrap;
+    align-content:space-around;
+    /* align-items:center; */
+}
+#con{
+    /* background-color: blue; */
+    width:90%;
+    height: 60px;
+    /* float: left; */
+    margin: auto;
+}
+#line{
+    background-color: white;
+    width:90%;
+    height: 2px;
+    /* float: left; */
+    margin: auto;
+}
+#bot{
+    /* background-color: antiquewhite; */
+    width:90%;
+    height: 60px;
+    /* float: left; */
+    margin: auto;
+    display: flex;
+    /* flex-wrap: nowrap; */
+    justify-content:space-between;
+}
+#divlef{
+    /* background-color: blue; */
+    width:30%;
+    height: 60px;
+    /* float: left; */
+    /* margin: auto; */
+}
+#divcen{
+    /* background-color: blue; */
+    width:30%;
+    height: 60px;
+    /* float: left; */
+    /* margin: auto; */
+}
+#divrig{
+    /* background-color: blue; */
+    width:8%;
+    height: 60px;
+    /* float: left; */
+    /* margin: auto; */
+}

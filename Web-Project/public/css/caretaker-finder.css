@@ -1,0 +1,200 @@
+#nav{
+    background-color: orange;
+    height:80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+#head{
+    font-size: 50px;
+    font-family: didot,serif;
+    margin:auto;
+}
+#hehe{
+    margin-top: 90px;
+    /* width:100%;
+    height:80px;
+    background-color: aqua; */
+}
+
+#boxi{
+    width:100%;
+    height:100px;
+    /* background-color: beige; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#city-div{
+    width:25%;
+    height:60px;
+    /* background-color: aquamarine; */
+}
+#pet-div{
+    width:25%;
+    height:60px;
+    /* background-color: aquamarine; */
+}
+#cit-sel{
+     /* border: 1px solid;  */
+    /* height: 80px; */
+    /* font-size: 20px; */
+    width: 80%;
+}
+#pet-sel{
+    /* border: 1px solid; */
+    /* height: 80px; */
+    /* font-size: 20px; */
+    width: 80%;
+}
+
+
+#find-button{
+    height:50px;
+    width:200px ;
+    /* background-color: antiquewhite; */
+    margin: auto;
+    margin-top: 50px;
+}
+#botton1{
+    background-color: black;
+    border-radius: 100px;
+    border: 1px; 
+    color: orange;
+    width: 200px;
+    height:50px;
+    margin: auto;
+    font-size: 20px;
+    margin-top: 10px;
+
+}
+#botton1:hover{
+    background-color: orange;
+    border-radius: 100px;
+    border: 1px; 
+    color: black;
+    width: 200px;
+    height:50px;
+    margin: auto;
+    font-size: 20px;
+    /* margin-top: 10px; */
+    /* margin- */
+    margin-left: -10px;
+}
+#botton1:active{
+    background-color: black;
+    border-radius: 100px;
+    border: 1px; 
+    color: orange;
+    width: 200px;
+    height:50px;
+    margin: auto;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+
+
+
+#contain_cards{
+    /* height:1000px; */
+    width:100%;
+    /* background-color: bisque; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin:auto;
+    margin-top: 50px;
+}
+#each-card{
+    /* background-color: rgb(241, 241, 3); */
+    /* width: 400px; */
+}
+.card{
+    /* margin-top: 50px; */
+    width: 400px;
+    height:450px;
+    /* background-color: aquamarine; */
+    border: 2px orange solid;
+    /* float: left; */
+    display: flex;
+    align-items: center;
+     /* align-content:space-around;  */
+     margin-bottom: 20px;
+
+}
+.logo{
+    border: 2px solid orange;
+    margin-top: 20px; 
+    height:100px;
+    width:100px;
+    /* background-color: blanchedalmond; */
+    border-radius: 50%;
+}
+#pic{
+    /* background-color:aquamarine ; */
+    /* background-image: url(../Uploads/support_2.jpg); */
+    background-size:contain;
+     background-position: center;
+    background-repeat: no-repeat; 
+} 
+#card-body{
+    margin-top: 20px; 
+    height:300px;
+    width:80%;
+    /* background-color: rgb(54, 67, 63); */
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+} 
+/*
+#botton{
+    margin-top: 20px;
+    background-color: orange;
+    border-radius: 100px;
+    border: 1px; 
+    width: ;
+    height:;
+     margin-left: 20px;
+} */
+#card-body-body{
+    margin-left: 5%; 
+    height:180px;
+    width:90%;
+    /* background-color: orange; */
+} 
+#botton2{
+    background-color: black;
+    border-radius: 100px;
+    border: 1px; 
+    color: orange;
+    width: 150px;
+    height:40px;
+    margin: auto;
+    font-size: 20px;
+    margin-top: 10px;
+
+}
+#botton2:hover{
+    background-color: orange;
+    border-radius: 100px;
+    border: 1px; 
+    color: black;
+    width: 170px;
+    height:45px;
+    margin: auto;
+    font-size: 20px;
+    margin-top: 10px;
+    /* margin- */
+}
+#botton2:active{
+    background-color: black;
+    border-radius: 100px;
+    border: 1px; 
+    color: orange;
+    width: 150px;
+    height:40px;
+    margin: auto;
+    font-size: 20px;
+    margin-top: 10px;
+}

@@ -1,0 +1,22 @@
+body{
+    /* background-color: bisque; */
+}
+#box{
+    border: 1px black solid;
+}
+#pics{
+    height:200px;
+
+}
+#pic-div{
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.picii{
+    background-color: rgb(59, 96, 96);
+    height:160px;
+    width:160px;
+    border-radius: 50%;
+}

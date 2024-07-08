@@ -1,0 +1,21 @@
+Doubts->
+
+1. Need to upload 'NoPic' also.
+2. Req.idpic won't be created if we dont upload any id proof
+3. Fake-Path.
+4. Photo in Updation.
+
+
+2. Update -> 
+Update only one
+// When not updating profile pic, how to retain the previous profile pic
+
+3. 'NoName.jpg' in uploads folder
+
+
+
+
+Caretaker-Profile
+
+Things to Remember
+1. When Search any mail-id, "No file chosen" comes after 'choose file'

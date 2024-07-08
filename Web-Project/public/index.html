@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="https://livejs.com/live.js"></script>
+    <!-- <meta http-equiv="refresh" content="10"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui-react/dist/umd/semantic-ui-react.min.js"></script>
+    <link
+    async
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css"
+  />  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+
+    <link rel="stylesheet" href="css/index.css">
+    
+    <title>CAREWARE</title>
+
+    <script>
+      $(document).ready(
+        function(){
+          
+          
+             $("#signup").click(
+                    function(){
+                        var x= $("#txtEmail1").val();
+                        var y= $("#txtPass1").val();
+                        var z= $("#userType").val();
+                        var a= $("#mailstat1").html();
+                        //alert(a);
+                        if(a=="<b>Already Occupied</b>")
+                          {
+                            alert();
+                            return;
+                          }
+                    
+                        var infoObj={
+                            type:"get",
+                            url:"/signup-process-post1",
+                            data:{
+                                txtEmail1:x,
+                                txtPass1:y,
+                                userType:z,
+                                mailstat:a
+                            }
+                        }
+                        
+
+                        $.ajax(infoObj).done(function(msg){
+                        //alert("hogya");
+                       
+                            //alert(msg);//the statement written in "Signed in Successfully".
+                            $("#status1").html(msg);
+                        }).fail(function(err){
+                            alert(err);
+                        })
+                    }
+            );
+
+              $("#txtEmail1").blur(function(){
+                var email=$("#txtEmail1").val();
+
+                var infoObj={
+                  type:"get",
+                  url:"/checkEmailInTable",
+                  data:{
+                    mailid:email
+                  }
+                }
+
+                $.ajax(infoObj).done(function(msg){
+                        $("#mailstat1").html(msg);
+                    }).fail(function(err){
+                        alert(err);
+                    })
+              });
+
+              $("#login").click(
+                      function(){
+                        var x=$("#txtEmail2").val();
+                        var y= $("#txtPass2").val();
+                    
+                        var infoObj={
+                            type:"get",
+                            url:"/login-process-post",
+                            data:{
+                                txtEmail2:x,
+                                txtPass2:y
+                            }
+                        }
+                        
+
+                        $.ajax(infoObj).done(function(msg){
+                              $("#status2").html(msg);
+                        }).fail(function(err){
+                            alert(err);
+                            alert("Error");
+                        })
+                      }
+              );
+
+              // $("#careta").click(
+              //   function(){
+              //     window.location.href="https://google.com";
+              //   }
+              // )
+          
+        }
+      );
+    </script>
+</head>
+<body>
+    <div id="navi">
+      <div class="navbar navbar-expand-lg fixed-top " id="na">
+        <div class="container-fluid">
+          <div id="left">
+            <a id="logo" href="#">            
+              <img src="Uploads/main_logo.jpg" alt="" width="140px" height="120px" >
+            </a>
+            <a id="sitename" href="#" style="text-decoration:none" >CAREWARE</a>            
+          </div>
+          
+          
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+              <button class="ui animated button" tabindex="0" id="butn" data-bs-toggle="modal" data-bs-target="#signupModal">
+                <div class="visible content"><h4>SignUp</h4></div>
+                <div class="hidden content">
+                  <i class="right arrow icon"></i>
+                </div>
+              </div>
+
+              <button class="ui animated button"  tabindex="0" id="butn" data-bs-toggle="modal" data-bs-target="#loginModal">
+                <div class="visible content"><h4>Login</h4></div>
+                <div class="hidden content">
+                  <i class="right arrow icon"></i>
+                </div>
+              </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid"><hr></div>
+    
+
+  
+<!-- Login-Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!--  -->
+        <form>
+          <div class="form-group row" id="login-logo"></div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Email-Id:</label>
+            <div class="col-sm-12">
+              <input type="email" class="form-control" id="txtEmail2" name="txtEmail2" placeholder="Email-Id">
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-3 col-form-label">Password:</label>
+            <div class="col-sm-12">
+              <input type="password" class="form-control" id="txtPass2" name="txtPass2" placeholder="Password">
+            </div>
+          </div>
+          <br>
+          <!-- <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                  <label class="form-check-label" for="gridRadios1">
+                    First radio
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                  <label class="form-check-label" for="gridRadios2">
+                    Second radio
+                  </label>
+                </div>
+                <div class="form-check disabled">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+                  <label class="form-check-label" for="gridRadios3">
+                    Third disabled radio
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <div class="form-group row">
+            <div class="col-sm-2">Checkbox</div>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                <label class="form-check-label" for="gridCheck1">
+                  Example checkbox
+                </label>
+              </div>
+            </div>
+          </div> -->
+          
+          
+          
+          
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <input type="button" class="btn btn-primary" value="LogIn" id="login">
+              <span id="status2">*</span>
+            </div>
+          </div>
+        </form>
+        <!--  -->
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
+<!-- Signup-Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Sign-Up</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!--  -->
+        <form>
+          <div class="form-group row" id="signup-logo">
+            
+          </div>
+          <br>
+          <div class="form-group row">
+            <label  class="col-sm-3 col-form-label">Email-Id:</label>
+            <div class="col-sm-12">
+              <input type="email" class="form-control inputbox" id="txtEmail1" name="txtEmail1" placeholder="Email-Id">
+              <span id="mailstat1">*</span>
+            </div>
+            
+          </div>
+          <br>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Password:</label>
+            <div class="col-sm-12">
+              <input type="password" class="form-control inputbox" id="txtPass1" name="txtPass1" placeholder="Password">
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <label  class="col-sm-3 col-form-label">User Type:</label>
+            <div class="col-sm-12">
+              <select name="userType" id="userType" class="col-sm-12" >
+                <option selected value="empty">Select User Type</option>
+                <option value="Client">Client</option>
+                <option value="Care-Taker">Care-Taker</option>
+              </select>
+            </div>
+          </div>
+          <br>
+          
+          
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <input type="button" class="btn btn-primary" value="Sign Up" id="signup">
+              <span id="status1">*</span>
+            </div>
+          </div>
+          
+        </form>
+        <!--  -->
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
+<div  id="coro"> <!-- Space for Corousel-->
+  
+  <div  id="haha">
+
+  </div>
+  
+</div>
+
+
+<div class="container-fluid" id="head"> <!-- Space for Corousel-->
+  
+  <div  id="for_text">
+    OUR SERVICES
+  </div>
+  
+</div>
+
+<div id="card_s" class="container-fluid">
+
+    <div id="find-c-taker" class="card">
+      <div class="logo" id="c-taker"></div>
+      <div class="card-body">
+        <center>
+          <button class="ui animated button" tabindex="0" id="botton" onclick="window.open('caretaker-finder.html')">
+            <div class="container visible content" target="_blank">
+              <h4>Find Care Taker</h4>
+            </div>
+              <div class="hidden content">
+                <i class="right arrow icon"></i>
+              </div>
+        </center>
+      </div>
+    </div>
+
+
+    <div id="support_1" class="card">
+      <div class="logo" id="support_icon"></div>
+      <div class="card-body">
+        <center>
+          <button class="ui animated button" tabindex="0" id="botton" >
+            <div href="" class="visible content" id="" target="_blank"><h4>24 X 7 Support</h4>
+            </div>
+              <div class="hidden content">
+                <i class="right arrow icon"></i>
+              </div>
+        </center>
+      </div>
+    </div>
+
+
+    <div id="think" class="card">
+      <div class="logo" id=""></div>
+      <div class="card-body">
+        <center>
+          <button class="ui animated button" tabindex="0" id="botton" >
+            <div href="" class="visible content" id="" target="_blank"><h4>Think</h4>
+            </div>
+              <div class="hidden content">
+                <i class="right arrow icon"></i>
+              </div>
+        </center>
+      </div>
+    </div>
+</div>
+
+<div class="container-fluid"><hr></div>
+
+<div class="container-fluid" id="head"> <!-- Space for Corousel-->
+  <div  id="for_text">
+    MEET THE DEVELOPERS
+  </div>
+</div>
+
+<div id="card_s2" >
+  <div class="ui link cards" id="inn">
+    <div class="card" id="me">
+      <div class="image">
+        <img src="Uploads/my_photo.jpeg" style="height:250px; ">
+      </div>
+      <div class="content">
+        <div class="header" >Mr. Gaurish Bansal</div>
+        <div class="meta" >
+          <a id="name">Web Developer</a>
+        </div>
+        <div class="description">
+          Gaurish is an undergraduate student pursuing his B.S. in <b>IIT Kanpur</b>, in the field of <b>Statistics And Data Science</b>.
+        </div>
+      </div>
+      <!-- <div class="extra content">
+        <span class="right floated">
+          Joined in 2013
+        </span>
+        <span>
+          <i class="user icon"></i>
+          75 Friends
+        </span>
+      </div> -->
+    </div>
+
+    <div class="card" id="sir">
+      <div class="image">
+        <img src="Uploads/sir_pic.jpg" style="height:250px; ">
+      </div>
+      <div class="content">
+        <div class="header" >Mr. Rajesh Kumar Bansal</div>
+        <div class="meta">
+          <span class="date" id="name">Guide</span>
+        </div>
+        <div class="description">
+          He is the writer of book-"Real Java". He trains students different languages- C, C++, DSA, Java, Full Stack Web Dev.
+        </div>
+      </div>
+      <!-- <div class="extra content">
+        <span class="right floated">
+          Joined in 2011
+        </span>
+        <span>
+          <i class="user icon"></i>
+          35 Friends
+        </span>
+      </div> -->
+    </div>
+
+    <div class="card" id="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.880571351419!2d74.95013941517371!3d30.211955917594604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391732a4f07278a9%3A0x4a0d6293513f98ce!2sBanglore%20Computer%20Education!5e0!3m2!1sen!2sin!4v1678483139472!5m2!1sen!2sin" width="350" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>    </div>
+    </div>
+
+</div>
+
+<div id="end"> <!-- Space for Corousel-->
+  <div id="con">
+    
+  </div>
+  <div id="line">
+    
+  </div>
+  <div id="bot">
+    <div id="divlef">
+      © 2023 Gaurish, Inc. All Rights Reserved
+    </div>
+    <div id="divcen">
+      Proudly Powered by Bansal
+    </div>
+    <div id="divrig">
+      <i class="twitter icon" ></i>
+      <i class="facebook f icon"></i>
+      <i class="linkedin icon"></i> 
+      <i class="youtube icon"></i> 
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

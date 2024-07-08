@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile-CareTaker</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/profile-client.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+
+    <script>
+        
+
+        function img_pathUrl_2(input) {
+            //alert((window.URL ? URL : webkitURL).createObjectURL(input.files[0]));
+            document.getElementById("idPrev").src = (window.URL ? URL : webkitURL).createObjectURL(input.files[0]);
+        } //To Preview Image
+
+
+
+        $(document).ready(
+            function(){
+                $("#search").click(
+                    function(){
+                        //alert("hi");
+                        var a=$("#txtEmail").val();
+                        //alert(a);
+                        
+
+                        var infoObj={
+                            type:"get",
+                            url:"/getfromCareTakerTable",
+                            data:{
+                                mail:a,
+                            }
+                        }
+
+                        //AJAX Request fired
+                        $.ajax(infoObj).done(function (jsonArray) {
+                    //alert(JSON.stringify(jsonArray)+"  Length="+jsonArray.length)
+                
+                    $("#txtName").val(jsonArray[0].name)
+                    $("#txtCon").val(jsonArray[0].contact)
+                    $("#txtAdd").val(jsonArray[0].address)
+                    $("#txtWeb").val(jsonArray[0].website)
+                    $("#txtCity").val(jsonArray[0].city)
+                    $("#txtState").val(jsonArray[0].state)
+                    $("#txtPin").val(jsonArray[0].pin)
+                    $("#hdn2").val(jsonArray[0].proofpic)
+                    $("#idPrev").prop("src", "uploads/" + jsonArray[0].proofpic)
+                    $("#txtPet").val(jsonArray[0].selpets)
+
+                }).fail(function (err) {
+                    
+                    alert(err);
+                })
+
+                    }
+                );
+
+                $("#petlist").dblclick(
+                    function(){
+                        //alert( $("#txtPet").val());
+                        var selected=$('#petlist option:selected').text();
+                        if($("#txtPet").val().length != 0){
+                            $("#txtPet").val( $("#txtPet").val() + ', ' + selected );
+                        }
+                        else {
+                            $("#txtPet").val( $("#txtPet").val() + selected );
+
+                        }
+                    }
+                );
+
+                //To reload the page whenever user comes back to that page.
+                window.addEventListener( "pageshow", function ( event ) {
+                var historyTraversal = event.persisted || 
+                         ( typeof window.performance != "undefined" && 
+                              window.performance.navigation.type === 2 );
+                if ( historyTraversal ) {
+                // Handle page restore.
+                window.location.reload();
+                }
+                });
+            }
+        );
+    </script>
+</head>
+<body>
+
+<br><br>
+<div class="container" id="box">
+    <form method="post" enctype="multipart/form-data">
+        <br>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="">EmailId:</label>
+          </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" id="txtEmail" placeholder="Email" name="txtEmail">
+              <!-- <div class="form-group col-md-6"> -->
+                  <!-- <center>                 -->
+            </div>
+            <div class="form-group col-md-6">
+                <input type="button" class="btn btn-danger" value="Search" id="search" style="width: 150px;">
+                    <!-- </center> -->
+                  <!-- </div> -->
+              </div>
+          </div>
+
+        <div class="form-row">
+            
+            <div class="form-group col-md-6">
+              <label for="">Name:</label>
+              <input type="text" class="form-control" id="txtName" name="txtName" placeholder="Name"   >
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="">Contact Number:</label>
+                <input type="text" class="form-control" id="txtCon" name="txtCon" placeholder="Contact Number"    >
+            </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="">Address:</label>
+          <input type="text" class="form-control" id="txtAdd" name="txtAdd" placeholder="1234 Main St"   >
+        </div>
+
+        <div class="form-group">
+            <label for="">Website:</label>
+            <input type="text" class="form-control" id="txtWeb" name="txtWeb" placeholder="www.examplesite.com"   value="">
+        </div>
+
+        <!-- <div class="form-group">
+          <label for="inputAddress2">Address 2</label>
+          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        </div> -->
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="">City:</label>
+            <input type="text" class="form-control" id="txtCity" name="txtCity" placeholder="City"  >
+          </div>
+          <div class="form-group col-md-4">
+            <label for="">State:</label>
+            <select id="txtState" class="form-control" name="txtState">
+                <option selected>Choose...</option>
+                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                    <option value="Daman and Diu">Daman and Diu</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Orissa">Orissa</option>
+                    <option value="Pondicherry">Pondicherry</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttaranchal">Uttaranchal</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="West Bengal">West Bengal</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="">Pin:</label>
+            <input type="text" class="form-control" id="txtPin" name="txtPin" placeholder="Pin"  >
+          </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="">Pets that can be taken care of: </label>
+                (Double Click to add the pet.)
+                <select size="" multiple id="petlist">
+                    <option value="">Dog</option>
+                    <option value="">Cat</option>
+                    <option value="">Rat</option>
+                    <option value="">Cow</option>
+                </select>
+                
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="">Pets Selected:</label>
+                <input type="text" class="form-control" id="txtPet" value=""  name="txtPet" placeholder="Pets that can be taken care of!" >
+            </div>
+        </div>
+
+
+        <input type="hidden" id="hdn2" name="hdn2">            
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="">Id-Proof Pic:</label><br>
+                <input type="file" value="Choose File" name="idpic" id="idpic" accept="image/gif, image/jpeg, image/png"  onchange="img_pathUrl_2(this);">
+                <img src="" alt="" width="100" height="100" id="idPrev" >
+            </div>
+        </div>
+
+        
+
+        
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <center>                
+                    <input type="submit" class="btn btn-danger" value="Save" id="save" style="width: 150px;" formaction="/signup-caretaker-post">
+                </center>
+            </div>
+
+            <div class="form-group col-md-6">
+                <center>                
+                    <input type="submit" class="btn btn-danger" value="Update" id="update" style="width: 150px;" formaction="/update-caretaker-post">
+                </center>
+            </div>
+        </div>
+        
+        <br><br>
+          
+    </form>
+</div>
+<br><br>
+
+</body>
+</html>

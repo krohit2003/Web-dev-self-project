@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users-Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <script>
+        var module=angular.module("myModule",[]);
+        module.controller("myController",function($scope,$http){
+            //Fetch From Table--
+            
+            $scope.jsonUserAry;
+            $scope.fetchandshow=function(){
+                $http.get("/fetch-all-users-angular").then(ok,notok);
+
+                function ok(response){
+                    $scope.jsonUserAry=response.data;
+                }
+                function notok(response){
+                    alert(response.data); //error.
+                }
+            }
+
+
+            $scope.doBlock=function(emailid){
+                if(confirm("Do You Really Want to Block this user")==false){
+                    alert("Jaago Bhai Jaago!!");
+                    return;
+                }
+
+                $http.get("/do-block-this-user-angular?xEmail="+emailid).then(allisWell,notWell);
+                function allisWell(response){
+                    alert(response.data);
+                    $scope.fetchandshow(); //refetch the data from the table.
+                }
+
+                function notWell(response){
+                    alert(response.data);
+                }
+            }
+
+            $scope.doResume=function(emailid){
+                if(confirm("Do You Really Want to Unblock this user")==false){
+                    alert("Jaago Bhai Jaago!!");
+                    return;
+                }
+
+                $http.get("/do-resume-this-user-angular?xEmail="+emailid).then(allisWell,notWell);
+                function allisWell(response){
+                    alert(response.data);
+                    $scope.fetchandshow(); //refetch the data from the table.
+                }
+
+                function notWell(response){
+                    alert(response.data);
+                }
+            }
+        })
+    </script>
+</head>
+
+<body ng-app="myModule" ng-controller="myController">
+    <div id="navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#" id="" style="margin-left: 20px;">USERS-MANAGER</a>
+        </nav>
+    </div>
+
+    <br><br>
+    <center>
+        <input type="button" value="Load All Users" ng-click="fetchandshow();">
+        <br><br>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Sr.No.</th>
+                  <th scope="col">EmailId</th>
+                  <th scope="col">PassWord</th>
+                  <th scope="col">Mobile</th>
+                  <th scope="col">Status</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="obj in jsonUserAry">
+                    <td  scope="row">{{$index+1}}</td>
+                    <td>{{obj.emailid}}</td>
+                    <td>{{obj.pass_word}}</td>
+                    <td>{{obj.utype}}</td>
+                    <td>{{obj.stat}}</td>
+                    
+                    <td>
+                        <input type="button" value="Block" ng-click="doBlock(obj.emailid);">
+                    </td>
+                    <td>
+                        <input type="button" value="Resume" ng-click="doResume(obj.emailid);">
+                    </td>
+    
+                </tr>
+            </tbody>
+            
+            
+        </table>
+    </center>
+</body>
+</html>
